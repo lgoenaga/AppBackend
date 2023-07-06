@@ -71,14 +71,16 @@ public class UserService {
             return NOT_FOUND;
         }
 
-        if (!Objects.equals(exitUser.getUsername(), user.getUsername()) && (userRepository.existsByUsername(user.getUsername()))) {
+        if (!Objects.equals(exitUser.getUsername(), user.getUsername())){
+            if(userRepository.existsByUsername(user.getUsername())) {
                 return ALREADY_EXISTS;
-
+            }
         }
 
-        if (!Objects.equals(exitUser.getEmail(), user.getEmail()) && (userRepository.existsByEmail(user.getEmail()))) {
+        if (!Objects.equals(exitUser.getEmail(), user.getEmail())) {
+            if (userRepository.existsByEmail(user.getEmail())) {
                 return ALREADY_EXISTS;
-
+            }
         }
 
         exitUser.setFull_name(user.getFull_name().toUpperCase());
