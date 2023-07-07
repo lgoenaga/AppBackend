@@ -42,8 +42,16 @@ public class UserController {
     @PutMapping("/{id}")
     public String updateUser(@Validated @PathVariable Long id, @RequestBody User user) {
         if (user.getStatus() == null) {
+            System.out.println("Entra por null");
             user.setStatus(Status.ACTIVE);
+        }else{
+            try {
+                System.out.println(Status.valueOf(user.getStatus().toString()));
+            }catch (IllegalArgumentException e){
+                throw new HttpMessageNotReadableException("Status is not valid");
+            }
         }
+
         return userService.updateUser(id, user);
 
 

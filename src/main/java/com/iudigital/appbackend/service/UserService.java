@@ -92,7 +92,7 @@ public class UserService {
 
         String updateDate = new Date().toString();
         exitUser.setUpdated_at(updateDate);
-        
+
         userRepository.save(exitUser);
         return SUCCESSFULLY;
     }
