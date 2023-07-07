@@ -1,6 +1,5 @@
 package com.iudigital.appbackend.controller;
 
-
 import com.iudigital.appbackend.model.Rol;
 import com.iudigital.appbackend.service.RolService;
 
