@@ -59,6 +59,7 @@ public class RolService {
 
         String updateDate = new Date().toString();
 
+
         exitRol.setUpdated_at(updateDate);
 
         rolRepository.save(exitRol);

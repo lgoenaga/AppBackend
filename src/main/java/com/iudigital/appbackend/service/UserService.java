@@ -1,5 +1,6 @@
 package com.iudigital.appbackend.service;
 
+import com.iudigital.appbackend.model.Status;
 import com.iudigital.appbackend.model.User;
 import com.iudigital.appbackend.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -86,13 +87,12 @@ public class UserService {
         exitUser.setFull_name(user.getFull_name().toUpperCase());
         exitUser.setUsername(user.getUsername().toLowerCase());
         exitUser.setEmail(user.getEmail().toLowerCase());
-
         exitUser.setPassword(encoder.encode(user.getPassword()));
+        exitUser.setStatus(user.getStatus());
 
         String updateDate = new Date().toString();
-
         exitUser.setUpdated_at(updateDate);
-
+        
         userRepository.save(exitUser);
         return SUCCESSFULLY;
     }

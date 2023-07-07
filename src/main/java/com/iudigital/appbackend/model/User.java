@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+
+
 
 @Setter
 @Getter
@@ -24,6 +27,12 @@ public class User {
         private String password;
         private String created_at;
         private String updated_at;
+
+
+        @NotBlank
+        @Column(columnDefinition = "varchar(255) default 'ACTIVE'")
+        @Enumerated(value = EnumType.STRING)
+        private Status status;
 
 
 }
