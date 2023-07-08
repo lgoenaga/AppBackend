@@ -62,13 +62,13 @@ public class UserService {
       return exist;
     }
 
-  public Role Role(Role role) {
+  public Role role(Role role) {
       if (role == null) {
           role = Role.USER;
       }
         return role;
     }
-  public Status Status(Status status) {
+  public Status status(Status status) {
 
         if (status == null) {
             status = Status.ACTIVE;

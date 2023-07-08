@@ -53,8 +53,8 @@ public class UserController {
             }
             User createUser = new User();
 
-            createUser.setRole(userService.Role(userBody.getRole()));
-            createUser.setStatus(userService.Status(userBody.getStatus()));
+            createUser.setRole(userService.role(userBody.getRole()));
+            createUser.setStatus(userService.status(userBody.getStatus()));
 
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
@@ -97,8 +97,8 @@ public class UserController {
                     return ALREADY_EXISTS;
             }
 
-            updateUser.setRole(userService.Role(userBody.getRole()));
-            updateUser.setStatus(userService.Status(userBody.getStatus()));
+            updateUser.setRole(userService.role(userBody.getRole()));
+            updateUser.setStatus(userService.status(userBody.getStatus()));
 
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
