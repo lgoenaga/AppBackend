@@ -30,9 +30,13 @@ public class User {
 
 
         @NotBlank
-        @Column(columnDefinition = "varchar(255) default 'ACTIVE'")
+        @Column(columnDefinition = "varchar(30) default 'ACTIVE'")
         @Enumerated(value = EnumType.STRING)
         private Status status;
 
+        @NotBlank
+        @Column(columnDefinition = "varchar(30) default 'USER'")
+        @Enumerated(value = EnumType.STRING)
+        private Role role;
 
 }

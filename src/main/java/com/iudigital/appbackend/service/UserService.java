@@ -1,5 +1,7 @@
 package com.iudigital.appbackend.service;
 
+import com.iudigital.appbackend.model.Role;
+import com.iudigital.appbackend.model.Status;
 import com.iudigital.appbackend.model.User;
 import com.iudigital.appbackend.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -60,4 +62,19 @@ public class UserService {
       return exist;
     }
 
+  public Role Role(Role role) {
+      if (role == null) {
+          role = Role.USER;
+      }
+        return role;
+    }
+  public Status Status(Status status) {
+
+        if (status == null) {
+            status = Status.ACTIVE;
+        }
+
+        return status;
+
+    }
 }

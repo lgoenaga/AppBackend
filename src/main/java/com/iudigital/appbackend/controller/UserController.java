@@ -1,6 +1,5 @@
 package com.iudigital.appbackend.controller;
 
-import com.iudigital.appbackend.model.Status;
 import com.iudigital.appbackend.model.User;
 import com.iudigital.appbackend.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -54,11 +53,8 @@ public class UserController {
             }
             User createUser = new User();
 
-            if (userBody.getStatus() == null) {
-                createUser.setStatus(Status.ACTIVE);
-            }else{
-                createUser.setStatus(userBody.getStatus());
-            }
+            createUser.setRole(userService.Role(userBody.getRole()));
+            createUser.setStatus(userService.Status(userBody.getStatus()));
 
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
@@ -101,11 +97,8 @@ public class UserController {
                     return ALREADY_EXISTS;
             }
 
-            if (userBody.getStatus() == null) {
-                updateUser.setStatus(Status.ACTIVE);
-            }else{
-                updateUser.setStatus(userBody.getStatus());
-            }
+            updateUser.setRole(userService.Role(userBody.getRole()));
+            updateUser.setStatus(userService.Status(userBody.getStatus()));
 
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
