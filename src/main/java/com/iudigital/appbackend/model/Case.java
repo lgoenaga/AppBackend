@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 
 @Setter
 @Getter
@@ -17,6 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "cases")
 public class Case {
+
+    private static final String TAB = "\t\t\t\t\t";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +30,9 @@ public class Case {
 
 
     @NotBlank
-    @Column(columnDefinition = "varchar(30) default 'ATRACO'")
+    @Column(columnDefinition = "varchar(30) default 'ATTRACT'")
     @Enumerated(value = EnumType.STRING)
-    private Delito delito;
+    private Crime crime;
 
 
     @ManyToOne
@@ -41,19 +41,19 @@ public class Case {
 
     @Override
     public String toString() {
-        return  "\t"+"Case {"+ "\n"+
-                "\t\t\t\t\t"+"id= " + id + "\n"+
-                "\t\t\t\t\t"+"successDate= " + successDate + '\n' +
-                "\t\t\t\t\t"+"description= " + description + '\n' +
-                "\t\t\t\t\t"+"location= " + '\n' +
-                "\t\t\t\t\t\t\t\t\t"+"latitude= " + location.getAltitude() + '\n' +
-                "\t\t\t\t\t\t\t\t\t"+"length= " + location.getLength() + '\n' +
-                "\t\t\t\t\t\t\t\t\t"+"altitude= " + location.getAltitude() + '\n' +
-                "\t\t\t\t\t"+"created_at= " + created_at + '\n' +
-                "\t\t\t\t\t"+"updated_at= " + updated_at + '\n' +
-                "\t\t\t\t\t"+"delito= " + delito + '\n' +
-                "\t\t\t\t\t"+"user=" + user.getFull_name() + "\n" +
-                "\t\t\t\t"+"}"+ "\n";
+        return  "\t"+ "Case {"+ "\n"+
+                TAB + "id= " + id + "\n"+
+                TAB + "successDate= " + successDate + '\n' +
+                TAB + "description= " + description + '\n' +
+                TAB + "location= " + '\n' +
+                TAB + TAB +"latitude= " + location.getAltitude() + '\n' +
+                TAB + TAB +"length= " + location.getLength() + '\n' +
+                TAB + TAB +"altitude= " + location.getAltitude() + '\n' +
+                TAB + "created_at= " + created_at + '\n' +
+                TAB + "updated_at= " + updated_at + '\n' +
+                TAB + "crime= " + crime + '\n' +
+                TAB + "user=" + user.getFull_name() + "\n" +
+                TAB + "}" + "\n";
     }
 
 

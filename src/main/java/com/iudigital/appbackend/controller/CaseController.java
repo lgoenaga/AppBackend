@@ -1,7 +1,6 @@
 package com.iudigital.appbackend.controller;
 
 import com.iudigital.appbackend.model.Case;
-import com.iudigital.appbackend.model.Location;
 import com.iudigital.appbackend.service.CaseService;
 
 import org.springframework.validation.annotation.Validated;
@@ -45,7 +44,7 @@ public class CaseController {
 
             Case createCase = new Case();
 
-            createCase.setDelito(caseService.delito(caseBody.getDelito()));
+            createCase.setCrime(caseService.crime(caseBody.getCrime()));
             createCase.setSuccessDate(caseBody.getSuccessDate());
             createCase.setDescription(caseBody.getDescription());
             createCase.setLocation(caseBody.getLocation());
@@ -74,7 +73,7 @@ public class CaseController {
             Case updateCase = caseService.getCaseById(id);
             String updateDate = new Date().toString();
 
-            updateCase.setDelito(caseService.delito(caseBody.getDelito()));
+            updateCase.setCrime(caseService.crime(caseBody.getCrime()));
             updateCase.setDescription(caseBody.getDescription());
             updateCase.setUpdated_at(updateDate);
 

@@ -1,7 +1,7 @@
 package com.iudigital.appbackend.service;
 
 import com.iudigital.appbackend.model.Case;
-import com.iudigital.appbackend.model.Delito;
+import com.iudigital.appbackend.model.Crime;
 import com.iudigital.appbackend.repository.CaseRepository;
 import org.springframework.stereotype.Service;
 
@@ -38,23 +38,11 @@ public class CaseService {
         return caseRepository.findById(id).isPresent();
     }
 
-    public boolean existCaseByDelito(String delito){
-        return caseRepository.existsByDelito(delito);
-    }
-
-    public Delito delito(Delito delito) {
-        if (delito == null) {
-            delito = Delito.ATRACO;
+    public Crime crime(Crime crime) {
+        if (crime == null) {
+            crime = Crime.ATTRACT;
         }
-        return delito;
+        return crime;
     }
-
-    public Object ubicacion(double latitud, double longitud, double altitud) {
-        if (latitud == 0 && longitud == 0) {
-            return "No se ha podido obtener la ubicación";
-        }
-        return "Latitud: " + latitud + " Longitud: " + longitud + " Altitud: " + altitud;
-    }
-
 
 }
