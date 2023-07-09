@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class UserService {
 
@@ -26,8 +25,7 @@ public class UserService {
     }
 
     public User getUserById(Long id){
-        return  userRepository.getUserById(id);
-
+        return  userRepository.findById(id).orElse(null);
     }
 
     public String createUser(User user) {
@@ -40,7 +38,7 @@ public class UserService {
     }
 
     public boolean existUserById(Long id){
-        return userRepository.existsById(id);
+        return userRepository.findById(id).isPresent();
     }
 
     public boolean existUserByName(String username){
@@ -77,4 +75,5 @@ public class UserService {
         return status;
 
     }
+
 }

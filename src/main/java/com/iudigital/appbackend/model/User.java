@@ -29,6 +29,7 @@ public class User {
         private String updated_at;
 
 
+
         @NotBlank
         @Column(columnDefinition = "varchar(30) default 'ACTIVE'")
         @Enumerated(value = EnumType.STRING)
@@ -38,5 +39,9 @@ public class User {
         @Column(columnDefinition = "varchar(30) default 'USER'")
         @Enumerated(value = EnumType.STRING)
         private Role role;
+
+
+
+
 
 }

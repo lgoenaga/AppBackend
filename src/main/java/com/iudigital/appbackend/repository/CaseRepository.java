@@ -1,11 +1,14 @@
 package com.iudigital.appbackend.repository;
 
-import com.iudigital.appbackend.model.Rol;
+import com.iudigital.appbackend.model.Case;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RolRepository extends JpaRepository<Rol, Long> {
-    boolean existsByName(String name);
+public interface CaseRepository extends JpaRepository<Case, Long> {
+
+
+    boolean existsByDelito(String delito);
+
 
 }
