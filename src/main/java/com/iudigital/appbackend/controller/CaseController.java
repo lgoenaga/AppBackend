@@ -73,7 +73,7 @@ public class CaseController {
             Case updateCase = caseService.getCaseById(id);
             String updateDate = new Date().toString();
 
-            updateCase.setCrime(caseService.crime(caseBody.getCrime()));
+            updateCase.setCrime(caseService.crime(caseBody.getCrime())); // Default is ATTRACT
             updateCase.setDescription(caseBody.getDescription());
             updateCase.setUpdated_at(updateDate);
 
