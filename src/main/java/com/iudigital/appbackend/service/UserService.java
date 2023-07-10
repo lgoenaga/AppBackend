@@ -4,6 +4,7 @@ import com.iudigital.appbackend.model.Role;
 import com.iudigital.appbackend.model.Status;
 import com.iudigital.appbackend.model.User;
 import com.iudigital.appbackend.repository.UserRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public class UserService {
 
     final
     UserRepository userRepository;
+
+
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -60,6 +63,7 @@ public class UserService {
       return exist;
     }
 
+
   public Role role(Role role) {
       if (role == null) {
           role = Role.USER;
@@ -76,4 +80,7 @@ public class UserService {
 
     }
 
+    public User getUserByName(String username) {
+        return (User) userRepository.findByUsername(username).orElse(null);
+    }
 }

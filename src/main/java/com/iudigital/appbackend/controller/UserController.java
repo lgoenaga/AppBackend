@@ -2,6 +2,7 @@ package com.iudigital.appbackend.controller;
 
 import com.iudigital.appbackend.model.User;
 import com.iudigital.appbackend.service.UserService;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -58,8 +59,9 @@ public class UserController {
 
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
-
-            createUser.setFull_name(userBody.getFull_name().toUpperCase());
+            if (userBody.getFull_name() != null  && userBody.getFull_name() != ""){
+                createUser.setFull_name(userBody.getUsername().toUpperCase());
+            }
             createUser.setUsername(userBody.getUsername().toLowerCase());
             createUser.setEmail(userBody.getEmail());
             createUser.setPassword(generatedPassword);
@@ -71,10 +73,6 @@ public class UserController {
         }catch (Exception e){
             throw new IllegalArgumentException(BAD_REQUEST + e.getMessage());
         }
-
-
-
-
     }
 
     @PutMapping("/{id}")
@@ -104,8 +102,9 @@ public class UserController {
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
 
             String updateDate = new Date().toString();
-
-            updateUser.setFull_name(userBody.getFull_name().toUpperCase());
+            if (userBody.getFull_name() != null  && userBody.getFull_name() != ""){
+                updateUser.setFull_name(userBody.getUsername().toUpperCase());
+            }
             updateUser.setUsername(userBody.getUsername().toLowerCase());
             updateUser.setEmail(userBody.getEmail().toLowerCase());
 
