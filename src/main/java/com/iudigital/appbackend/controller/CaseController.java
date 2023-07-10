@@ -7,6 +7,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/cases")
@@ -26,8 +29,7 @@ public class CaseController {
     }
 
     @GetMapping("")
-    public String getAllCases() {
-
+    public List<Case> getAllCases() {
 
         return caseService.getAllCases();
     }
@@ -99,6 +101,29 @@ public class CaseController {
         }catch (Exception e){
             throw new IllegalArgumentException(BAD_REQUEST + e.getMessage());
         }
+    }
+
+    @GetMapping("/user/{user_id}")
+    public ResponseEntity<List<Case>> getCaseByUserId(@PathVariable Long user_id)  {
+        try{
+
+            boolean existCase = caseService.existCaseByUserId(user_id);
+
+            if (!existCase){
+                return ResponseEntity.notFound().build();
+            }
+
+          List<Case> cases= caseService.getCasesByUserId(user_id);
+
+
+          return ResponseEntity.ok(cases);
+
+
+
+        }catch (Exception e){
+            throw new IllegalArgumentException(BAD_REQUEST + e.getMessage());
+        }
+
     }
 
 }
