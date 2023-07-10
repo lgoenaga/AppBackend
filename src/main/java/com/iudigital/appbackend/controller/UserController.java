@@ -59,7 +59,7 @@ public class UserController {
 
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
-            if (userBody.getFull_name() != null  && userBody.getFull_name() != ""){
+            if (userBody.getFull_name() != null  && !userBody.getFull_name().equals("")){
                 createUser.setFull_name(userBody.getUsername().toUpperCase());
             }
             createUser.setUsername(userBody.getUsername().toLowerCase());
@@ -102,7 +102,7 @@ public class UserController {
             String generatedPassword = passwordEncoder.encode(userBody.getPassword());
 
             String updateDate = new Date().toString();
-            if (userBody.getFull_name() != null  && userBody.getFull_name() != ""){
+            if (userBody.getFull_name() != null  && !userBody.getFull_name().equals("")){
                 updateUser.setFull_name(userBody.getUsername().toUpperCase());
             }
             updateUser.setUsername(userBody.getUsername().toLowerCase());

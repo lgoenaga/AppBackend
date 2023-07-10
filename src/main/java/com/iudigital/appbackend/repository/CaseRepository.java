@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CaseRepository extends JpaRepository<Case, Long> {
 
-    boolean existsByUserId(Long user_id);
+    boolean existsByUserId(Long userId);
 
-    List<Case> findAllByUserId(Long user_id);
+    List<Case> findAllByUserId(Long userId);
 }

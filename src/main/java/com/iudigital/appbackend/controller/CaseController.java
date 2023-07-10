@@ -103,17 +103,17 @@ public class CaseController {
         }
     }
 
-    @GetMapping("/user/{user_id}")
-    public ResponseEntity<List<Case>> getCaseByUserId(@PathVariable Long user_id)  {
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Case>> getCaseByUserId(@PathVariable Long userId)  {
         try{
 
-            boolean existCase = caseService.existCaseByUserId(user_id);
+            boolean existCase = caseService.existCaseByUserId(userId);
 
             if (!existCase){
                 return ResponseEntity.notFound().build();
             }
 
-          List<Case> cases= caseService.getCasesByUserId(user_id);
+          List<Case> cases= caseService.getCasesByUserId(userId);
 
 
           return ResponseEntity.ok(cases);

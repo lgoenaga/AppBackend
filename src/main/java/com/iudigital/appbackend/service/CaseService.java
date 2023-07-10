@@ -52,9 +52,9 @@ public class CaseService {
         return crime;
     }
 
-    public boolean existCaseByUserId(Long user_id) {
+    public boolean existCaseByUserId(Long userId) {
 
-      return caseRepository.existsByUserId(user_id);
+      return caseRepository.existsByUserId(userId);
     }
 
     public List<Case> getCasesByUserId(Long userId) {
